@@ -1,7 +1,12 @@
-const express = require('express')
-const app = express()
+import express from 'express';
+const express = require('./config/express')
 const port = 3000
 
-app.get('/', (req, res) => res.send('Hello World!'))
+express.init(function (app) {
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+    var httpServer = http.createServer(app).listen(port)
+  
+    httpServer.on('listening', function () {
+      info('Express http server listening on port ' + this.address().port);
+    });
+  });
